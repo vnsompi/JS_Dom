@@ -225,7 +225,118 @@ const boxes = document.querySelectorAll("box");
 
 boxes.forEach((box) => {
    box.addEventListener("click", (e) => {
-      console.log(e.target);
+      e.target.style.transform = "scale(0.7)";
    });
 });
 
+
+// LES DEUX FAÇONS DE SELECTIONNER LES ELEMENTS
+
+// ADDEventListener VS ONCLICK         
+// au lieude addEv on peut utiliser onclick
+// dicument.onclick = function() {
+//    console.log("click");
+// }
+// bubbling s'execute a la fin 
+document.body.addEventListener("click", () => {
+   console.log("click1");   
+});
+
+// le capture s'execute en premier
+document.body.addEventListener("click", () => {
+   console.log("click2");   
+}, true); // le true permet de faire du capture
+// le capture s'execute en premier
+
+// --------------------------------
+
+// stop propagation
+
+questionQ.addEventListener("click", (e) => {
+   alert("click sur la question");
+   e.stopPropagation(); // permet d'arreter la propagation de l'evenement
+});
+
+// enlever le addEventListener avec le removeEventListener
+
+// ---------------------------------
+// BOM
+// BOM (Browser Object Model) permet de manipuler le navigateur
+// window.open("https://www.google.com", "_blank"); // ouvre une nouvelle fenetre
+// LE BOM PERMET DE FAIRE DES ACTIONS SUR LE NAVIGATEUR
+
+console.log(Window.innerheight); // hauteur de la fenetre
+console.log(Window.scrollY); // position du scroll
+
+// acceder a un autre page 
+// window.open("https://www.google.com", "cours js", "height=600,width=800"); // ouvre une nouvelle fenetre
+
+// window.close(); // ferme la fenetre
+// le elements adose a windows
+
+btn2.addEventListener("click", () => {
+   confirm("Etes-vous sur de vouloir quitter cette page ?"); // affiche une boite de dialogue
+});
+
+let name;
+btn2.addEventListener("click", () => {
+   let name = prompt("Quel est votre nom ?");
+   // console.log(name);
+   questionQ.innerHTML = `Bonjour ${name}, bienvenue sur notre site !`;
+   // affiche une boite de dialogue pour demander le nom
+});
+
+// -----------------------------------------------------------------
+// le setTimeout et setInterval
+// setTimeout permet d'executer une fonction apres un certain temps
+setTimeout(() => {
+   questionQ.style.borderRadius = "300px ";
+}, 2000); // 2000ms = 2 secondes
+
+// setInterval permet d'executer une fonction toutes les secondes
+setInterval(() => {
+   document.body.innerHTML +=
+       "<p>Hello World</p>";
+}, 1000); // 1000ms = 1 seconde
+
+document.body.addEventListener("click", () => {
+   clearInterval(); // permet d'arreter l'intervalle
+});
+
+// comment suprimer l'element
+// e.target.
+
+// location  il permet de recuperer l'url de la page
+// et aussi de changer l'url de la page
+
+// console.log(location.href);
+// console.log(location.host);
+// console.log(location.pathname);
+// console.log(location.search);
+
+// location.replace("https://www.google.com"); // redirige vers google
+// // location.reload(); // recharge la page
+
+// window.onload = () => {
+//    location.href = "https://www.google.com"; // redirige vers google
+// }
+
+// navigator
+
+console.log(navigator.userAgent); // affiche les informations sur le navigateur
+
+// geolocation 
+
+// history
+console.log(history.length); // affiche le nombre de pages dans l'historique
+
+// ''''''''''''''''''''''''''''''''''
+
+// le set property
+window.addEventListener("mousemove", (e) => {
+   console.log(e);
+
+   nav.style.setProperty("--x", e.layerX + "px");
+   nav.style.setProperty("--y", e.layerY + "px");
+
+});
