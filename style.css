@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    list-style: none;
+}
+
+body{
+    text-align: center;
+    margin: 0;
+    color:white ;
+    min-height: 200vh;
+    overflow-x: hidden;
+
+}
+
+.box{
+    border: 6px solid #fff;
+    transition: 0.25s ease;
+    background: black;
+}
+
+p{
+    visibility: hidden;
+    width: 240px;
+    margin-top: 10px auto 0;
+    
+
+}
+/* on peut nous cree une class puis l'appeler dans index.js */
+.show_reponse{
+    visibility: visible;
+    opacity:1;
+    transform: translateX(0);
+}
+
+.mousemove{
+    height: 50px;
+    width: 50px;
+    border: 2px solid pink;
+    position: absolute;
+    transform: translate(-50%, 50%);
+    border-radius: 50px;
+    transition: 0.3s ease;
+    z-index: -1;
+}
+/* POUR LA NAVIGATION */
+nav{
+    background:pink;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top: -50px;
+    transition: 0.3s ease;
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+    
+}
+
+
